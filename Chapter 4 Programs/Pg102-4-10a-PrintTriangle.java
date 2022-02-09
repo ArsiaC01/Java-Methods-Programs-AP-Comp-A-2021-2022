@@ -24,4 +24,3 @@ public class printStar {
 	}
 
 }
-// Code written by Ethan K as part of the Tenzca-AP-Computer-A-Java-Methods-Program repository on GitHub.
