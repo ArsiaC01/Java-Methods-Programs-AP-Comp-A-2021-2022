@@ -18,6 +18,8 @@ All programs are labelled in the format: `Page#-Chapter#-Excersize#-Description`
   - `Chapter 8 - Iterative Statements: while, for, do-while`
   - `Chapter 9 - Implementing Classes and Using objects`
   - `Chapter 10 - Strings`
+  - `Chapter 11 - Class Hierarchies and Interfaces`
+  - `Chapter 12 - Arrays`
   
 ### ⚠ Warnings ⚠
   Although this GitHub Repository may provide nearly all the programs necessitated for the majority of the class, (as of 2021's class), actually completing the programs is always the best way to succeed and pass the AP test. **Please do not copy these programs, which is plagiarism.** These programs are intended as **reference-only**, for instance, if you're ever lost on how to tackle a specific problem within a broader spectrum of code. Attempt to code the solutions yourself, and only if you are lost, attempt to integrate and modify certain aspects into your own code. You should understand exactly what each line of code does before implementing it into your program. Asking others for help is always the best solution.
