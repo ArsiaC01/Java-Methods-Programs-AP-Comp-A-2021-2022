@@ -1,3 +1,4 @@
+// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 import java.lang.Math;
 
 public class Rectangle
