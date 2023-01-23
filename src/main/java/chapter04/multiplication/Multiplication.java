@@ -1,5 +1,7 @@
+package chapter04.multiplication;
+
 // Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
-public class multiplication
+public class Multiplication
 {
 	public static void main(String [] args)
 	{

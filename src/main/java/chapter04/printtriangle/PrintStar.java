@@ -1,5 +1,6 @@
-// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
-public class printStar {
+package chapter04.printtriangle;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+
+public class PrintStar {
 
 	public static void main(String[] args)
 	{
