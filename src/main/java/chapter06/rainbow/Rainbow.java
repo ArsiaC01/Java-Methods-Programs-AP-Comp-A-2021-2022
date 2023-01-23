@@ -1,4 +1,4 @@
-// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter06.rainbow;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Container;
@@ -54,7 +54,7 @@ public class Rainbow extends JPanel
 
   public static void main(String[] args)
   {
-    JFrame w = new JFrame("Rainbow");
+    JFrame w = new JFrame("chapter06.rainbow.Rainbow");
     w.setBounds(300, 300, 300, 200);
     w.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     Container c = w.getContentPane();

@@ -1,6 +1,6 @@
-// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter06.piechart;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 /**
- * A PollDisplayPanel holds the vote counts and
+ * A chapter06.piechart.PollDisplayPanel holds the vote counts and
  * displays the numbers and the pie chart for
  * the current vote counts.
  */

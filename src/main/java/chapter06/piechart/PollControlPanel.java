@@ -1,7 +1,7 @@
-// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter06.piechart;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 
 /*
- * Implements the control panel for the Poll program
+ * Implements the control panel for the chapter06.piechart.Poll program
  */
 import java.awt.*;
 import java.awt.event.*;
