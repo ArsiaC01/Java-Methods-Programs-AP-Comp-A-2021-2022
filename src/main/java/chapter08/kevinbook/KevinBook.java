@@ -1,3 +1,5 @@
+package chapter08.kevinbook;
+
 // Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 public class KevinBook {
 
