@@ -6,7 +6,7 @@
 | 147      |             | PieChart    |
 | 153      | 16          | BMI         |
 | 154      | 18          | DogYears    |
-| 155      | 19          | chapter06.rainbow.Rainbow     |
+| 155      | 19          | Rainbow     |
 
 Problems taken from *Java Methods Object-Oriented Programming and Data Structures*.
 

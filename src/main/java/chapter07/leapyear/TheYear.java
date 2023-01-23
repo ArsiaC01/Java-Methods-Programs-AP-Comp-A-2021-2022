@@ -1,7 +1,7 @@
-// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter07.leapyear;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 import java.util.Scanner;
 
-public class theYear
+public class TheYear
 {
 	public static void main(String[] args)
 	{
