@@ -1,4 +1,4 @@
-// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter05.morning;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 import java.io.File;
 import java.io.IOException;
 import javax.sound.sampled.AudioFormat;
