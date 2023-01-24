@@ -2,104 +2,78 @@
 package chapter09.snackbar;
 
 /**
- * This class implements a vendor that sells one kind
- * of items. A vendor carries out sales transactions.
+ * This class implements a vendor that sells one kind of items. A vendor carries out sales transactions.
  */
-
-public class Vendor
-{
-    private final int price;  //the price of a single item in cents
-    private int stock; //number of items to place in stock
-    private int deposit; //number of cents deposited
-    private int change; //number of cents currently in change
+public class Vendor {
+    private final int price;
+    private int stock;
+    private int deposit;
+    private int change;
 
     /**
-     * Constructs a Vendor
-     *
+     * Constructs a Vendor.
      * @param price the price of a single item in cents (int)
      * @param stock number of items to place in stock (int)
      */
-    public Vendor(int price, int stock)
-    {
+    public Vendor(int price, int stock) {
         this.price = price;
         this.stock = stock;
     }
 
     /**
-     * Returns the number of items currently in stock.
-     *
-     * @return number of items currently in stock (int)
+     * @return The number of items currently in stock.
      */
-    public int getStock()
-    {
+    public int getStock() {
         return stock;
     }
 
     /**
      * Sets the quantity of items in stock.
-     *
-     * @param qty number of items to place in stock (int)
+     * @param qty The number of items to place in stock.
      */
-    public void setStock(int qty)
-    {
+    public void setStock(int qty) {
         stock = qty;
     }
 
     /**
-     * Implements a sale.  If there are items in stock and
-     * the deposited amount is greater than or equal to
-     * the single item price, then adjusts the stock
-     * and calculates and sets change and returns true;
-     * otherwise refunds the whole deposit (moves it into
-     * change) and returns false.
-     *
-     * @return true for a successful sale, false otherwise (boolean)
+     * Makes a sale depending on the current contents of the stock and deposit field. If the deposited
+     * amount is greater than the price, the change is moved into the change field.
+     * @return {@code true} if the sale was successful and {@code false} otherwise.
      */
-    public boolean makeSale()
-    {
-        if (stock > 0 && deposit > price)
-        {
+    public boolean makeSale() {
+        boolean saleIsSuccess = stock > 0 && deposit > price;
+
+        if (saleIsSuccess) {
             change = deposit - price;
-            deposit = 0;
             stock--;
-            return true;
+        } else {
+            change = deposit;
         }
-        change = deposit;
         deposit = 0;
-        return false;
+        return saleIsSuccess;
     }
 
     /**
-     * Adds a specified amount (in cents) to the
-     * deposited amount.
-     *
-     * @param number of cents to add to the deposit (int)
+     * @param cents The number of cents to be added to the deposit.
      */
-    public void addMoney(int number)
-    {
-        deposit += number;
+    public void addMoney(int cents) {
+        deposit += cents;
     }
 
     /**
-     * Returns and zeroes out the amount of change (from
-     * the last sale or refund).
-     *
-     * @return number of cents in the current change (int)
+     * Takes and clears the money in the change box.
+     * @return The number of cents taken from the change box.
      */
-    public int getChange()
-    {
-        int tempchange = change;
+    public int getChange() {
+        int tempChange = change;
         change = 0;
-        return tempchange;
+        return tempChange;
     }
 
     /**
-     * Returns the currently deposited amount (in cents).
-     *
-     * @return number of cents in the current deposit (int)
+     * @return The number of cents in the deposit.
      */
-    public int getDeposit()
-    {
+    public int getDeposit() {
         return deposit;
     }
 }
