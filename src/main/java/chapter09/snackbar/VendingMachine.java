@@ -5,25 +5,24 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class VendingMachine extends JPanel
-        implements ActionListener
-{
+public class VendingMachine extends JPanel implements ActionListener {
     private static final int FULL_STOCK = 5;
-    private JButton deposit25c, deposit10c, deposit5c, go;
+    private JButton deposit25c;
+    private JButton deposit10c;
+    private JButton deposit5c;
+    private JButton go;
     private JTextField display;
     private Vendor vendor;
     boolean trayFull;
     Color brandColor;
     String brandName;
 
-    public VendingMachine(String brand, Color color, int price, ImageIcon coin)
-    {
+    public VendingMachine(String brand, Color color, int price, ImageIcon coin) {
         setBackground(Color.WHITE);
         brandColor = color;
         brandName = brand;
 
-        JTextField banner = new JTextField("  " + brandName +
-                "  " + price + "c  ");
+        JTextField banner = new JTextField("  " + brandName + "  " + price + "c  ");
         banner.setEditable(false);
         banner.setFont(new Font("Serif", Font.BOLD, 14));
         banner.setHorizontalAlignment(JTextField.CENTER);
@@ -68,53 +67,51 @@ public class VendingMachine extends JPanel
         vendor = new Vendor(price, FULL_STOCK);
     }
 
-    public void reload()
-    {
+    public void reload() {
         vendor.setStock(FULL_STOCK);
         display.setText(" " + vendor.getDeposit() + "  ");
         repaint();
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
-        JButton b = (JButton)e.getSource();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        JButton button = (JButton) e.getSource();
 
-        if (b == deposit25c)
+        if (button == deposit25c) {
             vendor.addMoney(25);
-        else if (b == deposit10c)
+        } else if (button == deposit10c) {
             vendor.addMoney(10);
-        else if (b == deposit5c)
+        } else if (button == deposit5c) {
             vendor.addMoney(5);
-        else if (b == go)
-        {
+        } else if (button == go) {
             trayFull = vendor.makeSale();
             int change = vendor.getChange();
-            if (trayFull)          // Successful sale
-            {
+            if (trayFull) {
+                // Successful sale
                 repaint();
                 JOptionPane.showMessageDialog(null,
                         "Enjoy your " + brandName + "\n" + " Change " + change + "c",
                         "Enjoy " + brandName, JOptionPane.PLAIN_MESSAGE);
                 trayFull = false;
-            }
-            else if (change > 0)   // Refund
-            {
+            } else if (change > 0) {
+                // Refund
                 JOptionPane.showMessageDialog(null,
                         "Take " + change + "c back",
                         "Money back", JOptionPane.ERROR_MESSAGE);
             }
         }
 
-        if (vendor.getStock() > 0)
+        if (vendor.getStock() > 0) {
             display.setText(" " + vendor.getDeposit() + "  ");
-        else
+        } else {
             display.setText("Call service ");
+        }
 
         repaint();
     }
 
-    public void paintComponent(Graphics g)
-    {
+    @Override
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         final int x0 = getWidth() / 12;
@@ -124,14 +121,15 @@ public class VendingMachine extends JPanel
         g.setColor(Color.BLACK);
         g.drawRect(x0, y0, 28, FULL_STOCK * yStep + 4);
 
-        int y = y0 + 4, x = x0 + 4;
+        int y = y0 + 4;
+        int x = x0 + 4;
         int stock = vendor.getStock();
         int count = FULL_STOCK;
 
-        while (count > 0)
-        {
-            if (count <= stock)
+        while (count > 0) {
+            if (count <= stock) {
                 drawCan(g, x, y);
+            }
             y += yStep;
             count--;
         }
@@ -140,12 +138,12 @@ public class VendingMachine extends JPanel
         y += yStep;
         g.drawRect(x0, y - 4, 28, 18);
 
-        if (trayFull)
+        if (trayFull) {
             drawCan(g, x, y);
+        }
     }
 
-    private void drawCan(Graphics g, int x, int y)
-    {
+    private void drawCan(Graphics g, int x, int y) {
         g.setColor(brandColor);
         g.fillRoundRect(x, y, 20, 10, 4, 4);
         g.setColor(Color.WHITE);
