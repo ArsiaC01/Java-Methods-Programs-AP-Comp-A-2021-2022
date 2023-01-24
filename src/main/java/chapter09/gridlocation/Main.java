@@ -3,15 +3,12 @@ package chapter09.gridlocation;
 
 import info.gridworld.grid.Location;
 
-public class Main
-{
-    public static void main(String[] args)
-    {
-        System.out.println("The distance between the two points is: " + Distance(new Location(9, 2), new Location(2, 2)));
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("The distance between the two points is: " + distance(new Location(9, 2), new Location(2, 2)));
     }
 
-    public static int Distance(Location loc1, Location loc2)
-    {
+    public static int distance(Location loc1, Location loc2) {
         int location1Row = loc1.getRow();
         int location1Column = loc1.getCol();
         int location2Row = loc2.getRow();
