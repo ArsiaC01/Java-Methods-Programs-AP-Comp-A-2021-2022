@@ -7,15 +7,12 @@ import javax.swing.*;
 
 import static chapter10.palindrome1.Palindrome.isPalindrome;
 
-public class StringTest extends JFrame
-        implements ActionListener
-{
+public class StringTest extends JFrame implements ActionListener {
     private final JTextField input;
     private final JTextField result;
 
-    public StringTest()
-    {
-        super("String test");
+    public StringTest() {
+        super("StringTest");
         Box box1 = Box.createVerticalBox();
         box1.add(new JLabel("Input:"));
         box1.add(Box.createVerticalStrut(10));
@@ -42,8 +39,8 @@ public class StringTest extends JFrame
         input.requestFocus();
     }
 
-    public void actionPerformed(ActionEvent e)
-    {
+    @Override
+    public void actionPerformed(ActionEvent e) {
         String str = input.getText();
 
         str = String.valueOf(isPalindrome(str));
@@ -52,8 +49,7 @@ public class StringTest extends JFrame
         input.selectAll();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         StringTest window = new StringTest();
         window.setBounds(100, 100, 300, 100);
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);

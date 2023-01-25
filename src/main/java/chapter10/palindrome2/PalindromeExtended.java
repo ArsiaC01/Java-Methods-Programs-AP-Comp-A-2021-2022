@@ -4,20 +4,10 @@ package chapter10.palindrome2;
 import static java.lang.Character.isLetterOrDigit;
 import static java.lang.Character.toUpperCase;
 
-public class Palindrome
-{
-    public static void main(String[] args)
-    {
-        System.out.println(isPalindrome("mad' dam"));
-    }
-
-    public static boolean isPalindrome(String word)
-    {
-        //Gets length of word
+public class PalindromeExtended {
+    public static boolean isPalindrome(String word) {
         int length = word.length();
-        //Initialize new char array
         char[] wordChar;
-        //Converts String word to char array
         wordChar = word.toCharArray();
 
         //Gets length of char array without the special characters included
@@ -28,11 +18,9 @@ public class Palindrome
 
         int counter2 = 0;
         //Removes all the special characters from the char array
-        for (int counter = 0; counter < length; counter++)
-        {
+        for (int counter = 0; counter < length; counter++) {
             //If specific character is not a letter or digit
-            if (isLetterOrDigit(wordChar[counter]))
-            {
+            if (isLetterOrDigit(wordChar[counter])) {
                 wordChar2[counter2] = toUpperCase(wordChar[counter]);
                 counter2++;
             }
@@ -43,30 +31,25 @@ public class Palindrome
 
         int forwardCounter = 0;
         //Reverses the char array
-        for (int backCounter = lengthLetterAndWord - 1; backCounter >= 0; backCounter--)
-        {
+        for (int backCounter = lengthLetterAndWord - 1; backCounter >= 0; backCounter--) {
             wordChar2Reversed[forwardCounter] = wordChar2[backCounter];
             forwardCounter++;
         }
 
         //Checks if the arrays are equal. If they
-        for(int counter3 = 0; counter3 < lengthLetterAndWord - 1; counter3++)
-        {
+        for (int counter3 = 0; counter3 < lengthLetterAndWord - 1; counter3++) {
             //If wordChar2 is not equal to the reversed wordChar2, then return false.
-            if(wordChar2[counter3] != wordChar2Reversed[counter3])
+            if (wordChar2[counter3] != wordChar2Reversed[counter3])
                 return false;
         }
         return true;
     }
 
     //Returns the number of letters and numbers in the char array
-    private static int numOfLetterDigit(char[] charArray)
-    {
+    private static int numOfLetterDigit(char[] charArray) {
         int count = 0;
-        for(int counter3 = 0; counter3 < charArray.length; counter3++)
-        {
-            if(isLetterOrDigit(charArray[counter3]))
-            {
+        for (int counter3 = 0; counter3 < charArray.length; counter3++) {
+            if (isLetterOrDigit(charArray[counter3])) {
                 count++;
             }
         }
@@ -74,31 +57,25 @@ public class Palindrome
     }
 
     //Alternative method of finding palindromes using charAt()
-    public static boolean isPalindrome2(String word)
-    {
+    public static boolean isPalindrome2(String word) {
         int length = word.length();
-        for (int counter = 0; counter < (length / 2); ++counter)
-        {
-            if (word.charAt(counter) != word.charAt(length - counter - 1))
-            {
+        for (int counter = 0; counter < (length / 2); ++counter) {
+            if (word.charAt(counter) != word.charAt(length - counter - 1)) {
                 return false;
             }
         }
         return true;
     }
 
-    public static boolean isPalindromeU(String word)
-    {
+    public static boolean isPalindromeU(String word) {
         StringBuilder theWord = new StringBuilder();
 
         int length = word.length();
-        for (int counter = 0; counter < length; counter++)
-        {
+        for (int counter = 0; counter < length; counter++) {
             //Gets char for the specific position in the string from the counter
             char character = theWord.charAt(counter);
             //If the character is a letter/digit
-            if (!isLetterOrDigit(character))
-            {
+            if (!isLetterOrDigit(character)) {
                 theWord.deleteCharAt(counter);
             }
             word = String.valueOf(theWord);
@@ -107,12 +84,15 @@ public class Palindrome
         length = word.length(); //Length = 6
         StringBuilder backLetter = new StringBuilder();
 
-        for (int backCounter = length - 1; backCounter >= 0; backCounter--)
-        {
+        for (int backCounter = length - 1; backCounter >= 0; backCounter--) {
             //Gets first character and last character
             backLetter.append(word.charAt(backCounter));
         }
         System.out.println(word);
         return backLetter.toString().compareTo(word) == 0;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPalindrome("mad' dam"));
     }
 }

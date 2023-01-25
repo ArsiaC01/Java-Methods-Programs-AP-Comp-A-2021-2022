@@ -6,18 +6,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import static chapter10.palindrome2.Palindrome.isPalindrome;
+import static chapter10.palindrome2.PalindromeExtended.isPalindrome;
 
-public class StringTest extends JFrame
-        implements ActionListener
-{
+public class StringTest extends JFrame implements ActionListener {
     private final JTextField input;
     private final JTextField result;
 
-    //Code provided by Java textbook
-    public StringTest()
-    {
-        super("String test");
+    /**
+     * @apiNote Provided by textbook.
+     */
+    public StringTest() {
+        super("StringTest");
         Box box1 = Box.createVerticalBox();
         box1.add(new JLabel("Input:"));
         box1.add(Box.createVerticalStrut(10));
@@ -44,9 +43,11 @@ public class StringTest extends JFrame
         input.requestFocus();
     }
 
-    //Code provided by Java textbook
-    public void actionPerformed(ActionEvent e)
-    {
+    /**
+     * @apiNote Provided by textbook.
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
         String str = input.getText();
 
         str = String.valueOf(isPalindrome(str));
@@ -55,8 +56,7 @@ public class StringTest extends JFrame
         input.selectAll();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         StringTest window = new StringTest();
         window.setBounds(100, 100, 300, 100);
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
