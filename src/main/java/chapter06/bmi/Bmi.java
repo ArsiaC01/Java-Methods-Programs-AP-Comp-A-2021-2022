@@ -1,65 +1,75 @@
-package chapter06.bmi;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter06.bmi;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.text.DecimalFormat;
 
-public class Bmi extends JFrame
-  implements ActionListener
-{
-  JTextField inputLbs, inputInches, displayBmi;
+/**
+ * A {@link JFrame} window that calculates BMI from pounds and inches.
+ */
+public class Bmi extends JFrame implements ActionListener {
+    private JTextField massInputField;
+    private JTextField heightInputField;
+    private JTextField bmiDisplayField;
 
-  public Bmi()
-  {
-    super("BMI Calculator");
-    JLabel labelLbs = new JLabel("Weight (lbs):", SwingConstants.RIGHT);
-    inputLbs = new JTextField(5);
-    JLabel labelInches = new JLabel("Height (inches):", SwingConstants.RIGHT);
-    inputInches = new JTextField(5);
-    JLabel labelBmi = new JLabel("BMI = ", SwingConstants.RIGHT);
-    displayBmi = new JTextField(5);
-    displayBmi.setEditable(false);
-    JButton go = new JButton("Compute");
-    go.addActionListener(this);
+    public Bmi() {
+        super("BMI Calculator");
+        JLabel labelLbs = new JLabel("Weight (lbs.):", SwingConstants.RIGHT);
+        massInputField = new JTextField(5);
+        JLabel labelInches = new JLabel("Height (in.):", SwingConstants.RIGHT);
+        heightInputField = new JTextField(5);
+        JLabel labelBmi = new JLabel("BMI = ", SwingConstants.RIGHT);
+        bmiDisplayField = new JTextField(5);
+        bmiDisplayField.setEditable(false);
+        JButton go = new JButton("Compute");
+        go.addActionListener(this);
 
-    Container c = getContentPane();
-    c.setBackground(Color.white);
-    JPanel p = new JPanel();
-    p.setLayout(new GridLayout(3, 2, 5, 5));
-    p.add(labelLbs);
-    p.add(inputLbs);
-    p.add(labelInches);
-    p.add(inputInches);
-    p.add(labelBmi);
-    p.add(displayBmi);
-    c.add(p, BorderLayout.CENTER);
-    c.add(go, BorderLayout.SOUTH);
-  }
+        Container c = getContentPane();
+        c.setBackground(Color.white);
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2, 5, 5));
+        panel.add(labelLbs);
+        panel.add(massInputField);
+        panel.add(labelInches);
+        panel.add(heightInputField);
+        panel.add(labelBmi);
+        panel.add(bmiDisplayField);
+        c.add(panel, BorderLayout.CENTER);
+        c.add(go, BorderLayout.SOUTH);
+    }
 
-  public void actionPerformed(ActionEvent e)
-  {
-    int lbs = Integer.parseInt(inputLbs.getText());
-    int inches = Integer.parseInt(inputInches.getText());
-    double bmi = calculateBmi(lbs, inches);
-    DecimalFormat df = new DecimalFormat("00.0");
-    displayBmi.setText(df.format(bmi));
-  }
+    /**
+     * Called when the "Compute" button is clicked.
+     * @throws NumberFormatException when non-integers are entered into the height and mass input fields. Input
+     * verification should be used to mitigate this.
+     */
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        int pounds = Integer.parseInt(massInputField.getText());
+        int inches = Integer.parseInt(heightInputField.getText());
+        double bmi = calculateBmi(pounds, inches);
+        DecimalFormat df = new DecimalFormat("00.0");
+        bmiDisplayField.setText(df.format(bmi));
+    }
 
-  // Returns BMI equal to weight in kilograms divided
-  // over squared height in meters.
-  private double calculateBmi(int lbs, int inches)
-  {
-	  double kg, meters;
-	  kg = lbs * 0.454;
-	  meters = inches * 0.0254;
-	  return kg/(meters * meters);
-  }
+    /**
+     * Calculates body mass index.
+     * @param pounds mass in pounds.
+     * @param inches height in inches.
+     * @return BMI in kilograms per square meter.
+     */
+    private double calculateBmi(int pounds, int inches) {
+        double kilograms = pounds * 0.454;
+        double meters = inches * 0.0254;
+        return kilograms / Math.pow(meters, 2);
+    }
 
-  public static void main(String[] args)
-  {
-    Bmi w = new Bmi();
-    w.setBounds(300, 300, 300, 160);
-    w.setDefaultCloseOperation(EXIT_ON_CLOSE);
-    w.setVisible(true);
-  }
+    public static void main(String[] args) {
+        Bmi w = new Bmi();
+        w.setBounds(300, 300, 300, 160);
+        w.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        w.setVisible(true);
+    }
 }
