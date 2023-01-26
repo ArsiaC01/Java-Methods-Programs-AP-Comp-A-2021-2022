@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="bystander">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/chapter11/bystander/TEST.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/chapter11/bystander/source.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

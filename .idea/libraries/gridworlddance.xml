@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="gridworlddance">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/java/chapter11/gridworlddance/source.zip!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/java/chapter11/gridworlddance/TEST.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
