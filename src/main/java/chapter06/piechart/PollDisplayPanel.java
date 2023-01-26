@@ -1,150 +1,158 @@
-package chapter06.piechart;// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+// Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
+package chapter06.piechart;
+
+import javax.swing.*;
+import java.awt.*;
+
 /**
- * A chapter06.piechart.PollDisplayPanel holds the vote counts and
- * displays the numbers and the pie chart for
- * the current vote counts.
+ * A class that holds the vote counts and displays the numbers and the pie chart for them.
  */
+public class PollDisplayPanel extends JPanel {
+    private String name1;
+    private String name2;
+    private String name3;
+    private int count1;
+    private int count2;
+    private int count3;
 
-import java.awt.Color;
-import java.awt.Graphics;
-import javax.swing.JPanel;
-import java.math.*;
-
-public class PollDisplayPanel extends JPanel
-{
-  private String name1, name2, name3;
-  // Declare the int fields count1, count2, count3:
-  private int count1, count2, count3;
-
-  // Constructor
-  public PollDisplayPanel(String nm1, String nm2, String nm3)
-  {
-    setBackground(Color.WHITE);
-    name1 = nm1;
-    name2 = nm2;
-    name3 = nm3;
-    count1 = 0;   // optional
-    count2 = 0;   // optional
-    count3 = 0;   // optional
-  }
-
-  // Increments count1
-  public void vote1()
-  {
-	  count1++;
-  }
-
-  // Increments count2
-  public void vote2()
-  {
-	  count2++;
-  }
-
-  // Increments count3
-  public void vote3()
-  {
-	  count3++;
-  }
-
-  // Returns a string representation of this object
-  public String toString()
-  {
-    return ("Tami: " + count1 + " Brian: " + count2 + " Liz: " + count3);
-  }
-
-  // Redefines JPanel's paintComponent to draw this pie chart
-  public void paintComponent(Graphics g)
-  {
-    super.paintComponent(g);
-
-    int w = getWidth();
-    int h = getHeight();
-    int x = w/2;
-    int y = h/2;
-    int r = Math.min(w, h) / 4;
-    drawPieChart(g, x, y, r);
-    drawLegend(g, x, y, r);
-  }
-
-  // Draws the pie chart.
-  // To avoid gaps in the picture, the following algorithm is used:
-  // 1. set fromDegree to 0;
-  // 2. draw the red sector and increment fromDegree by its size
-  // 3. draw the green sector and increment fromDegree by its size
-  // 4. set the size of the blue sector to the remaining
-  //    area, 360 - fromDegree, but not less than 0:
-  //      degrees = Math.max(360 - fromDegree, 0);
-  //    (Occasionally, due to rounding errors, fromDegree may become 361,
-  //    for example, count1 = 5, count2 = 11, count3 = 0.)
-  private void drawPieChart(Graphics g, int x, int y, int r)
-  {
-    int total = count1 + count2 + count3;
-    int fromDegree = 0;
-
-    if (total > 0)
-    {
-      int degrees;
-      g.setColor(Color.RED);
-      degrees = countToDegrees(count1, total);
-      drawSector(g, x, y, r, fromDegree, degrees);
-      fromDegree += degrees;
-
-      g.setColor(Color.GREEN);
-      degrees = countToDegrees(count2, total);
-      drawSector(g, x, y, r, fromDegree, degrees);
-      fromDegree += degrees;
-
-      g.setColor(Color.BLUE);
-      degrees = Math.max(360 - fromDegree, 0);
-      drawSector(g, x, y, r, fromDegree, degrees);
+    public PollDisplayPanel(String name1, String name2, String name3) {
+        setBackground(Color.WHITE);
+        this.name1 = name1;
+        this.name2 = name2;
+        this.name3 = name3;
+        count1 = 0;   // These are optional as Java automatically initializes class properties to reasonable defaults
+        count2 = 0;   // (e.g., int to 0, float to 0.0f, any Object to null). However, it is considered bad style to
+        count3 = 0;   // rely on this. https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
     }
-    else
-    {
-      g.setColor(Color.LIGHT_GRAY);
-      drawSector(g, x, y, r, fromDegree, 360);
+
+    public void vote1() {
+        count1++;
     }
-  }
 
-  // Draws the vote counts and the corresponding color squares.
-  private void drawLegend(Graphics g, int x, int y, int r)
-  {
-    // Display the counts:
-    y += (r + 20);
-    g.setColor(Color.BLACK);
+    public void vote2() {
+        count2++;
+    }
 
-    g.drawString(name1 + ": " + count1, x - r, y);
+    public void vote3() {
+        count3++;
+    }
 
-    g.drawString(name2 + ": " + count2, x, y);
+    @Override
+    public String toString() {
+        return (name1 + ": " + count1 + ", " + name2 + ": " + count2 + ", " + name3 + ": " + count3);
+    }
 
-    g.drawString(name3 + ": " + count3, x + r, y);
+    /**
+     * Overrides the {@link JPanel#paintComponent(Graphics) paintComponent()} method in {@link JPanel} to
+     * draw a pie chart.
+     */
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
 
+        int width = getWidth();
+        int height = getHeight();
+        int x = width / 2;
+        int y = height / 2;
+        int radius = Math.min(width, height) / 4;
+        drawPieChart(g, x, y, radius);
+        drawLegend(g, x, y, radius);
+    }
 
-    // Display the color squares:
-    y += 5;
-    x -= 2;
-    g.setColor(Color.RED);
-    g.fillRect(x - r, y, 10, 10);
-    g.setColor(Color.GREEN);
-    g.fillRect(x, y, 10, 10);
-    g.setColor(Color.BLUE);
-    g.fillRect(x + r, y, 10, 10);
-  }
+    /**
+     * Draws a pie chart.
+     * <p>
+     * To avoid gaps in the picture, the following algorithm is used:
+     * <ol>
+     *     <li>Set {@code fromDegree} to 0.</li>
+     *     <li>Draw the red sector and increment {@code fromDegree} by its size.</li>
+     *     <li>Draw the green sector and increment {@code fromDegree} by its size.</li>
+     *     <li>Set the size of the blue sector to the remaining area, except if it is less than zero, at which
+     *     point we set it to zero. Occasionally, due to rounding errors, {@code fromDegree} may be set to 361 if,
+     *     for example, count1 = 5, count2 = 11, and count3 = 0.</li>
+     * </ol>
+     *
+     * @param g the {@link Graphics} context to be used.
+     * @param x TODO needs description
+     * @param y TODO needs description
+     * @param radius the radius of the pie chart to be drawn.
+     */
+    private void drawPieChart(Graphics g, int x, int y, int radius) {
+        int total = count1 + count2 + count3;
+        int fromDegree = 0;
 
-  // Returns the number of degrees in a pie slice that
-  // corresponds to count / total, rounded to the nearest integer.
-  private int countToDegrees(int count, int total)
-  {
-	  return (int) ((double) count / total * 360);
-  }
+        if (total > 0) {
+            int degrees;
+            g.setColor(Color.RED);
+            degrees = countToDegrees(count1, total);
+            drawSector(g, x, y, radius, fromDegree, degrees);
+            fromDegree += degrees;
 
+            g.setColor(Color.GREEN);
+            degrees = countToDegrees(count2, total);
+            drawSector(g, x, y, radius, fromDegree, degrees);
+            fromDegree += degrees;
 
-  // Draws a sector, centered at x, y, of radius r,
-  // of angle measure degrees, starting at fromDegree.
-  private void drawSector(Graphics g, int x, int y, int r, int fromDegree, int degrees)
-  {
-    if (degrees > 359)
-      g.fillOval(x - r, y - r, 2 * r, 2 * r);
-    else
-      g.fillArc(x - r, y - r, 2 * r, 2 * r, fromDegree, degrees);
-  }
+            g.setColor(Color.BLUE);
+            degrees = Math.max(360 - fromDegree, 0);
+            drawSector(g, x, y, radius, fromDegree, degrees);
+        } else {
+            g.setColor(Color.LIGHT_GRAY);
+            drawSector(g, x, y, radius, fromDegree, 360);
+        }
+    }
+
+    /**
+     * Draws a legend containing vote counts and their corresponding colored squares.
+     * @param g the {@link Graphics} context to be used.
+     * @param x TODO
+     * @param y TODO
+     * @param r TODO
+     */
+    private void drawLegend(Graphics g, int x, int y, int r) {
+        // Display the counts:
+        y += (r + 20);
+        g.setColor(Color.BLACK);
+        g.drawString(name1 + ": " + count1, x - r, y);
+        g.drawString(name2 + ": " + count2, x, y);
+        g.drawString(name3 + ": " + count3, x + r, y);
+
+        // Display the color squares:
+        y += 5;
+        x -= 2;
+        g.setColor(Color.RED);
+        g.fillRect(x - r, y, 10, 10);
+        g.setColor(Color.GREEN);
+        g.fillRect(x, y, 10, 10);
+        g.setColor(Color.BLUE);
+        g.fillRect(x + r, y, 10, 10);
+    }
+
+    /**
+     * Converts a given proportion to degrees.
+     * @param count the part of the total.
+     * @param total the total.
+     * @return the proportion in degrees.
+     */
+    private int countToDegrees(int count, int total) {
+        return (int) ((double) count / total * 360);
+    }
+
+    /**
+     * Draws a sector of a circle.
+     *
+     * @param g the {@link Graphics} context to be used.
+     * @param x the <i>x</i>-coordinate of the center of the circle.
+     * @param y the <i>y</i>-coordinate of the center of the circle.
+     * @param radius the radius of the circle.
+     * @param fromDegree the starting angle of the sector.
+     * @param degrees the size of the sector in degrees.
+     */
+    private void drawSector(Graphics g, int x, int y, int radius, int fromDegree, int degrees) {
+        if (degrees > 359) {
+            g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
+        } else {
+            g.fillArc(x - radius, y - radius, 2 * radius, 2 * radius, fromDegree, degrees);
+        }
+    }
 }
