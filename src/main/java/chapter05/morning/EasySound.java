@@ -11,7 +11,11 @@ import javax.sound.sampled.SourceDataLine;
 public class EasySound
 {
   private SourceDataLine line = null;
-  private byte[] audioBytes;
+  // audioBytes is declared immutable by the final keyword. In Java, class properties declared immutable can be
+  // assigned only once. Generally, this should be done as much as possible. Also, final declares the reference
+  // immutable; the property cannot be reassigned by the object it points to can be changed (does not apply to
+  // primitives. For more about the final keyword, read https://en.wikipedia.org/wiki/Final_(Java)#Final_variables.
+  private final byte[] audioBytes;
   private int numBytes;
 
   public EasySound(String fileName)
