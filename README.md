@@ -11,6 +11,7 @@ The `.java` files are provided for all programs assigned in Mr. Tenzca's AP Comp
 
 ### Contents
 All programs are contained in packages in the `src` module. Packages are structured as `chapter##.exercisename`.
+
   - `Chapter 2 - An Introduction to Software Engineering`
   - `Chapter 3 - Objects and Classes`
   - `Chapter 4 - Algorithms`
@@ -24,6 +25,10 @@ All programs are contained in packages in the `src` module. Packages are structu
   - `Chapter 12 - Arrays`
   - `Chapter 13 - ArrayLists`
 
+Each chapter package contains a chapter manifest file named `Chapter ##.md` (e.g., for Chapter 11, 
+[`Chapter 11.md`](src/main/java/chapter11/Chapter%2011.md)). These document the chapter, a table of the exercises
+covered and the package each is contained in, and the contributors to that chapter.
+
 ### ⚠ Warnings ⚠
 All programs should be accurate for each exercise and understandable for the current level. However, there may be a few
 minor differences between the code provided and "acceptable" code.
@@ -36,20 +41,22 @@ Firstly, newer programs for this repository contain documentation comments like 
 
 ```java
 /**
-* Constructs a {@link Time} by hours and minutes using military time, e.g., 23:00 instead of 11:00 PM.
-* @param hours The hour of day. Defaults to zero if an hour not between 0 and 23 is not given.
-* @param minutes The minute. Defaults to zero if a minute not between 0 and 59 is not given.
-*/
+ * Constructs a {@link Time} by hours and minutes using military time, e.g., 23:00 instead of 11:00 PM.
+ * 
+ * @param hours The hour of day. Defaults to zero if an hour not between 0 and 23 is not given.
+ * @param minutes The minute. Defaults to zero if a minute not between 0 and 59 is not given.
+ */
 public Time(int hours, int minutes) {
     ...
-} 
+}
 ```
 
 In real-world programs, these are used to explain purposes and usages of classes, methods or what have you. Here, they
-are used to help explain solutions and provide better help in understanding why or how code was written. 
+are used to help explain solutions and provide better help in understanding why or how code was written. It can be
+viewed in plaintext, but it is better viewed in an IDE like IntelliJ IDEA.
 
-For similar purposes, some programs will have code comments to explain reasons for strange or new techniques such as 
-this:
+For similar purposes, some programs will have code comments to explain reasons for potentially unclear or strange code
+like this:
 
 ```java
 String zero = "";
