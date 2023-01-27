@@ -1,6 +1,8 @@
 // Code written as part of the Java-Methods-Program-AP-Comp-A-2021-2022 repository on GitHub.
 package chapter05.morningandbackgroundchange;
 
+import chapter05.morning.EasySound;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
