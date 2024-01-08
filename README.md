@@ -3,9 +3,9 @@
 ### Forward
   All programs assigned from the *Java Methods Object-Oriented Programming and Data Structures* textbook.
   
-  The `.java` files are provided for all programs assigned in Mr. Tenzca's AP Computer Science A class from 2021-2022. 
+  The `.java` files are provided for select programs assigned in Mr. Tenzca's AP Computer Science A class from 2021-2022. 
   
-  >Benevolently provided *for the benefit of humankind and confused students* 😝.
+  >Provided *for the benefit of humankind and confused students*.
 
 ### Contents
 All programs are contained in packages in the `src` module. Packages are structured as `chapter##.exercisename`.
@@ -23,7 +23,7 @@ All programs are contained in packages in the `src` module. Packages are structu
   - `Chapter 13 - ArrayLists`
   
 ### ⚠ Warnings ⚠
-  Although this GitHub Repository may provide nearly all the programs necessitated for the majority of the class (as of 2021's class), actually completing the programs by yourself is always the best way to succeed. These programs are intended as **reference-only** and no personal responsibility is taken for the contents of the code. Attempt to code the solutions yourself, and only if you are lost should you attempt to integrate and modify certain aspects of this repository into your own code. You should understand exactly what each line of code does before implementing it into your program. Asking others for help is always the best solution.
+  Completing the programs by yourself is always the best way to succeed. These programs are intended for **reference-only**. Attempt to code the solutions yourself, and only if you are lost should you attempt to integrate and modify certain aspects of this repository into your own code. You should understand exactly what each line of code does before implementing it into your program. Asking others for help is always the best solution.
   
 ![SampleCode](src/main/res/CodeSample.png)
 ![SampleCode2](src/main/res/CodeSample2.png)
